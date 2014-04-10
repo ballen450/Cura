@@ -86,28 +86,31 @@ class simpleModePanel(wx.Panel):
 
 		nozzle_size = float(get('nozzle_size'))
 		if self.printTypeNormal.GetValue():
-			put('layer_height', '0.2')
 			put('wall_thickness', nozzle_size * 2.0)
 			put('layer_height', '0.10')
-			put('fill_density', '20')
+			put('fill_density', '10')
+			put('print_speed', '100')
+			put('cool_min_layer_time', '3')
+			put('bottom_layer_speed', '30')
 		elif self.printTypeLow.GetValue():
 			put('wall_thickness', nozzle_size * 2.5)
 			put('layer_height', '0.20')
 			put('fill_density', '10')
-			put('print_speed', '60')
+			put('print_speed', '135')
 			put('cool_min_layer_time', '3')
 			put('bottom_layer_speed', '30')
 		elif self.printTypeHigh.GetValue():
 			put('wall_thickness', nozzle_size * 2.0)
-			put('layer_height', '0.06')
+			put('layer_height', '0.05')
 			put('fill_density', '20')
+			put('print_speed', '80')
 			put('bottom_layer_speed', '15')
 		elif self.printTypeJoris.GetValue():
 			put('wall_thickness', nozzle_size * 1.5)
 
 		put('filament_diameter', self.printMaterialDiameter.GetValue())
 		if self.printMaterialPLA.GetValue():
-			pass
+			put('print_temperature', '190')
 		if self.printMaterialABS.GetValue():
 			put('print_bed_temperature', '100')
 			put('platform_adhesion', 'Brim')
